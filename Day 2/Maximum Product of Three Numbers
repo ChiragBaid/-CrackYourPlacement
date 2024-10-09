@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maximumProduct(vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        int plus = 0;
+        int minus = 0;
+        int barrier = -1;
+        for(auto &i:nums){
+            if(i>=0) plus++;
+            else minus++;
+        }
+        int ans = nums[n-1]*nums[n-2]*nums[n-3];
+        if(minus>=2){
+            ans = max(nums[n-1]*nums[0]*nums[1], ans);
+        }
+        return ans;
+        
+    }
+};
